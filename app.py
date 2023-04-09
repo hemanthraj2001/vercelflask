@@ -1,20 +1,22 @@
 import openai
 import requests
+import config
 
 from bs4 import BeautifulSoup
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 
+app = Flask(__name__)
+app.config.from_object(config)
+api = Api(app)
 
 #chat_gpt_cred
-openai.api_key = "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"
+secret_key = app.config['SECRET_KEY']
+openai.api_key = secret_key
 query = "From the given text return only medicines names in it :"
 #medicine_api
 base_query_url = 'https://www.apollopharmacy.in/search-medicines/'
 base_result_url = 'https://www.apollopharmacy.in'
-
-app = Flask(__name__)
-api = Api(app)
 
 class Prescription(Resource):
 
