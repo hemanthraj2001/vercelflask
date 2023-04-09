@@ -1,3 +1,4 @@
+import os
 import openai
 import requests
 
@@ -11,7 +12,7 @@ api = Api(app)
 
 #chat_gpt_cred
 
-openai.api_key = 'SECRET_KEY'
+openai.api_key = os.environ.get('SECRET_KEY')
 query = "From the given text return only medicines names in it :"
 #medicine_api
 base_query_url = 'https://www.apollopharmacy.in/search-medicines/'
