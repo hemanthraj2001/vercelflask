@@ -19,7 +19,7 @@ api = Api(app)
 class Prescription(Resource):
 
 
-    def post(self):
+    def get(self):
         parser = reqparse.RequestParser()
         parser.add_argument('text', required=True, location='args')
         args = parser.parse_args()
@@ -34,7 +34,7 @@ class Prescription(Resource):
 
 class Medicine(Resource):
 
-    def post(self):
+    def get(self):
         parser = reqparse.RequestParser()
         parser.add_argument('q',required=True,location='args')
         args = parser.parse_args()
